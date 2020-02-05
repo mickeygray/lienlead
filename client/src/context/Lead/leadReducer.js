@@ -1,8 +1,6 @@
 import {
     POST_LEAD,
-    GET_LEADS,
-    SET_LEAD,
-    SET_CURRENTNUMBER
+    SET_LEAD
   } from '../types';
 
   export default (state,action) => {

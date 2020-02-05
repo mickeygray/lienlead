@@ -11,7 +11,7 @@ import AuthState from './context/auth/AuthState';
 import LienState from './context/contact/LienState';
 import AlertState from './context/alert/AlertState';
 import CallState from './context/call/CallState';
-import LeadState from './context/lead/LeadState';
+import LeadState from './context/Lead/LeadState';
 import './App.css';
 
 

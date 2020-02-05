@@ -1,10 +1,8 @@
-import React, { useReducer, useContext } from 'react';
-import axios from 'axios';
+import React, { useReducer} from './node_modules/react';
 import LeadContext from './leadContext';
 import LeadReducer from './leadReducer';
 
 import {
-  POST_LEAD,
   SET_LEAD
 } from '../types';
 
