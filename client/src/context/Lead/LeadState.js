@@ -1,4 +1,4 @@
-import React, { useReducer} from './node_modules/react';
+import React, { useReducer } from react;
 import LeadContext from './leadContext';
 import LeadReducer from './leadReducer';
 
