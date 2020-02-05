@@ -6,7 +6,7 @@ import CallContext from '../../context/call/callContext';
 const CallItem = ({call:{answered, customer_city, customer_name, customer_phone_number, customer_state, id }}) => {
       
 
-       const { getCall, setNumber, number } = useContext(CallContext);
+       const { getCall, setNumber, currentNumber } = useContext(CallContext);
     
 
         

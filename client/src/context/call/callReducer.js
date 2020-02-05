@@ -15,13 +15,9 @@ import {
       case GET_CALL:
         return {
           ...state,
-          call: action.payload
+          id: action.payload
         } 
-      case SET_NUMBER:
-        return {
-          ...state,
-          number: action.payload
-        };
+
       case CLEAR_NUMBER:
         return {
           ...state,

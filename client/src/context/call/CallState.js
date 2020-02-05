@@ -13,7 +13,8 @@ const CallState = props => {
     const initialState = {
       calls: [],
       call: {},
-      number: null
+      number: null,
+      currentNumber: null
     };
 
 const [state, dispatch] = useReducer(CallReducer, initialState);
@@ -32,37 +33,28 @@ const getCalls = async () => {
             payload: res.data.calls
         });
 }; 
-
-
-
-
-  
-  const getCall = async id => {
-    const config = {
-      headers: {
-            'Authorization': 'Token token=6c0dbe4e525e0bff243007882b40eb2b'
-            
-          }
-      };
-      const res = await axios.get(`https://api.callrail.com/v3/a/423787543/calls/${id}.json`, config)
-      
-      dispatch({
-        type: GET_CALL,
-        payload: res.data
-    });
+const getCall = async id => {
+  const config = {
+    headers: {
+          'Authorization': 'Token token=6c0dbe4e525e0bff243007882b40eb2b'
+          
+        }
+    };
+    const res = await axios.get(`https://api.callrail.com/v3/a/423787543/calls/${id}.json`, config)
     
-
-  const number = res.data.customer_phone_number;
-  console.log(number);
+    dispatch({
+      type: GET_CALL,
+      payload: res.data
+  });
   
-  setNumber(number);
+
+const number = res.data.customer_phone_number;
+
 
 }
 
-const setNumber = number => {
-  dispatch({type: SET_NUMBER, payload: number})
+  
 
-}
 
 const clearNumber = () => {
   dispatch({type : CLEAR_NUMBER })
@@ -77,9 +69,7 @@ const clearNumber = () => {
             call: state.call,
             currentNumber: state.currentNumber,
             getCalls,
-            getCall,
-            setNumber,
-            clearNumber
+            getCall
     
     
           }}

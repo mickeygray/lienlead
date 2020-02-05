@@ -1,6 +1,7 @@
 
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import CallContext from '../../context/call/callContext';
+import LeadContext from '../../context/lead/leadContext';
 
 
 
@@ -8,19 +9,15 @@ const LeadForm = () => {
 
   
 
-  const { callContext , setNumber, number } = useContext(CallContext);
-
-
-  useEffect(() => {
-    if (number !== null) {
-      setNumber(number);
-    } 
-  }, [callContext, number]);
-
+  const { callContext , number } = useContext(CallContext);
+  const { leadContext } = useContext(LeadContext);
 
 
 
 const [ lead, setLead ] = useState({
+    name: '',
+    address: '',
+    phone: '', 
     email:'',
     lexId:'',
     compliant:'compliant',
@@ -28,11 +25,10 @@ const [ lead, setLead ] = useState({
     cpa:'cpa'
 })
 
-const { currentName, phone, email, lexId, currentAddress, compliant, filingStatus, cpa } = lead
-
+const { name , phone, email, lexId, address, compliant, filingStatus, cpa } = lead
 const onChange = e => {
 setLead({ ...lead, [e.target.name]: e.target.value });
-setNumber({ ...phone, [e.target.name]: e.target.value });
+
 
 };
 
@@ -41,13 +37,12 @@ setNumber({ ...phone, [e.target.name]: e.target.value });
       <h2 className='text-primary text-center'>
         Update Information 
       </h2>
-      
-      
+
       <input
         type='text'
         placeholder='Name'
-        name='leadName'
-        value={currentName}
+        name='name'
+        value={name}
         onChange={onChange}
       />
 
@@ -56,7 +51,7 @@ setNumber({ ...phone, [e.target.name]: e.target.value });
         type='text'
         placeholder='Address'
         name='address'
-        value={currentAddress}
+        value={address}
         onChange={onChange}
       />
 
@@ -139,7 +134,7 @@ setNumber({ ...phone, [e.target.name]: e.target.value });
         checked={cpa === 'nocpa'}
         onChange={onChange}
       />NO CPA{' '}
- 
+   
       
       <div>
         <input
