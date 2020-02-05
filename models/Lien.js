@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const LienSchema = mongoose.Schema({
+    
+    name: {
+        type: String
+    },
 
     filetype: {
         type: String
@@ -27,7 +31,7 @@ const LienSchema = mongoose.Schema({
 
     },
     amount: {
-        type: Number
+        type: String
 
     },
     county: {
@@ -35,21 +39,26 @@ const LienSchema = mongoose.Schema({
 
     },    
     loaddate: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     filingdate: {
         type: Date
     },
-    telephone: {
-        type: String,
-        required: true
-        
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        isRequired: true,
     },
-    email: {
-        type: String,
-        required: true
+    leadid: {
+        type: String
+    },
+    lexid: {
+        type: String
+    },
+    contact: {
+        type: String
     }
+
+
 });
 
 module.exports = mongoose.model('lien', LienSchema);

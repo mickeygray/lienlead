@@ -1,18 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const Lien = require('../Schema/Lien');
-const User = require('../Schema/User');
+const Lien = require('../Models/Lien');
+const config = require('config');
 
 
-// @route     GET Lien From Mongo
+
+
+//Search Like Address Only
 
 router.get('/', auth, async (req,res) => {
 
-const { name ,filetype, address, city, state, zip, plaintiff, amount, county, loaddate, filingdate } = req.body;
-  
-try{
-    const liens = await Lien.find({ lien: req.address }).sort({date: -1});
+    try{
+    
+    const liens = await Lien.find( { address: new RegExp(req.body.text,'g')});
+
     res.json(liens);
 
 } catch (err){
@@ -23,38 +25,24 @@ try{
 
 });
 
-// @route     POST Lien From Mongo
+// post array to mongoose
 
+router.post('/', auth, async (req,res) => {
 
-router.post('/', async (req,res) => {
-
-
-    const { name ,filetype, address, city, state, zip, plaintiff, amount, county, loaddate, filingdate } = req.body;
+    try{
+        const liens = await Lien.insertMany(req.body);
+        res.json(liens);
     
-    try {
-        const newLien = new Lien({
-            filetype,
-            address,
-            city,
-            state,
-            zip,
-            plaintiff,
-            amount,
-            county,
-            loaddate,
-            filingdate,
-            name
-        });
-
-        const lien = await newLien.save();
-
-        res.json(lien);
-    }catch (err) {
+    } catch (err){
         console.error(err.message);
-        res.status(500).send('servererror');
+        res.status(500).send('servererr');
+         
     }
+    
+    });
+    
 
-});
+
 
 
 module.exports = router;

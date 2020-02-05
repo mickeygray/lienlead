@@ -1,6 +1,6 @@
 const express = require ('express');
 const bcrypt = require('bcryptjs');
-const User = require('../Schema/User');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
@@ -27,12 +27,9 @@ router.get('/', auth, async (req,res) => {
 // @access    private
 
 router.post('/',
-async (req,res) => {    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({ errors:errors.array() });
-    }
+async (req,res) => {   
 
-    const { email, password } = req.body;
+    const {email, password } = req.body;
 
     try {
         let user  = await User.findOne({ email });
@@ -43,7 +40,7 @@ async (req,res) => {    const errors = validationResult(req);
             const isMatch = await bcrypt.compare(password, user.password);
 
             if(!isMatch){
-                return res.status(400).json({ msg: 'invalid cred'})
+                return res.status(400).json({ msg: 'invalid crdddded'})
             }
             const payload = {
                 user: {
