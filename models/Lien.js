@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const LienSchema = mongoose.Schema({
-    
     name: {
         type: String
     },
