@@ -61,4 +61,4 @@ const LienSchema = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('lien', LienSchema);
+module.exports = mongoose.model('Lien', LienSchema);
