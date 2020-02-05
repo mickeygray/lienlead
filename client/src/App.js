@@ -8,10 +8,10 @@ import Alerts from './components/layout/Alerts';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 import AuthState from './context/auth/AuthState';
-import LeadState from './context/lead/LeadState';
 import LienState from './context/contact/LienState';
 import AlertState from './context/alert/AlertState';
 import CallState from './context/call/CallState';
+import LeadState from './context/lead/LeadState';
 import './App.css';
 
 
