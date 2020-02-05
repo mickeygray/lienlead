@@ -1,16 +1,12 @@
 
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import CallContext from '../../context/call/callContext';
-import LeadContext from '../../context/lead/leadContext';
+import React, { useState } from 'react';
+
 
 
 
 const LeadForm = () => {
 
-  
 
-  const { callContext , number } = useContext(CallContext);
-  const { leadContext } = useContext(LeadContext);
 
 
 
