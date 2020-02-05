@@ -6,21 +6,21 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 import PrivateRoute from './components/routing/PrivateRoute';
-import LienState from './context/contact/LienState';
+
 import AuthState from './context/auth/AuthState';
 import LeadState from './context/lead/LeadState';
+import LienState from './context/contact/LienState';
 import AlertState from './context/alert/AlertState';
-import './App.css';
 import CallState from './context/call/CallState';
+import './App.css';
 
 
 const App = () => {
   return (
-    <AuthState>
-    <LeadState>
+    <AuthState> 
       <LienState>
-        <CallState>
-        
+       <CallState> 
+       <LeadState>
         <AlertState>
           <Router>
             <Fragment>
@@ -35,12 +35,11 @@ const App = () => {
               </div>
             </Fragment>
           </Router>
-         </AlertState>
-        
+         </AlertState>   
+         </LeadState>
        </CallState>
       </LienState>
-      </LeadState>
-    </AuthState>
+      </AuthState>
   );
 };
 

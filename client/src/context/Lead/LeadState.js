@@ -10,8 +10,7 @@ import {
 
 const LeadState = props => {
   const initialState = {
-     lead: {},
-     leads: []
+   lead: null
 
   };
 

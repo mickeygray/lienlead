@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Search from '../layout/Search';
 import Liens from '../liens/Liens';
-import Lead from '../leads/Lead';
+import LeadForm from '../leads/LeadForm';
 import Calls from '../calls/Calls';
 
 
@@ -16,7 +16,7 @@ const Home = () => {
             
             <div className='mx-3'>
  
-                <Lead />
+                <LeadForm />
          
             </div>
 
